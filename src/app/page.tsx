@@ -32,9 +32,12 @@ export default function Home() {
         <Image src="/logo.png" width={150} height={120} alt="carioca jeans" />
       </div>
       <div className="mt-5 flex flex-col gap-3">
-        {lojas.map((loja) => {
+        {lojas.map((loja, index) => {
           return (
-            <div className="border-black/5 bg-white shadow-sm flex flex-col items-center justify-center gap-3 border-[0.1rem] rounded-md">
+            <div
+              key={index}
+              className="border-black/5 bg-white shadow-sm flex flex-col items-center justify-center gap-3 border-[0.1rem] rounded-md"
+            >
               <img
                 className="rounded-t-md contain w-full h-[160px] container"
                 src={`/${loja.cover}`}
@@ -48,9 +51,10 @@ export default function Home() {
                 <FaMapMarkedAlt size={20} /> {loja.address}
               </button>
 
-              {loja.contact.map((contact) => {
+              {loja.contact.map((contact, isIndex) => {
                 return (
                   <button
+                    key={isIndex}
                     onClick={() =>
                       window.open(`https://wa.me/55${contact.number}`, "blank")
                     }
