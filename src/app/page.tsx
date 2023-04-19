@@ -62,7 +62,7 @@ export default function Home() {
                 <>
                   <h1 className="font-bold text-center text-lg">{loja.name}</h1>
                   <button
-                    onClick={() => window.open(`${loja.address}`, "blank")}
+                    onClick={() => window.open(`${loja.map}`, "blank")}
                     className="font-light flex items-center justify-center flex-col text-center text-sm"
                   >
                     <FaMapMarkedAlt color="#1a40a3" size={25} /> {loja.address}
