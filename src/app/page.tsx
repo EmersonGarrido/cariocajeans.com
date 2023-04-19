@@ -18,8 +18,66 @@ const lojas = [
     map: "https://goo.gl/maps/1NWbgXWJjH9mPBDEA",
     contact: [
       {
-        name: "Emerson Garrido",
-        number: "67993109148",
+        name: "Whatsapp 1",
+        number: "67991355709",
+      },
+      {
+        name: "Whatsapp 2",
+        number: "67993020672",
+      },
+    ],
+    open: false,
+  },
+  {
+    id: 2,
+    cover: "cover-leblon.png",
+    name: "Carioca Jeans Monte Castelo",
+    address: "Av. Mascarenhas de Moraes, 1826 - Monte Castelo",
+    map: "https://goo.gl/maps/NZgKpWERyigCQw447",
+    contact: [
+      {
+        name: "Whatsapp 1",
+        number: "67991179242",
+      },
+      {
+        name: "Whatsapp 2",
+        number: "67992137114",
+      },
+    ],
+    open: false,
+  },
+  {
+    id: 3,
+    cover: "cover-leblon.png",
+    name: "Carioca Jeans Aero Rancho",
+    address: "Av. Ezequiel Ferreira Lima, 1228 - Loja 1 - Jardim Aero Rancho",
+    map: "https://goo.gl/maps/P4K1DHBmUFM5w6sx9",
+    contact: [
+      {
+        name: "Whatsapp 1",
+        number: "67992151555",
+      },
+      {
+        name: "Whatsapp 2",
+        number: "67992632717",
+      },
+    ],
+    open: false,
+  },
+  {
+    id: 4,
+    cover: "cover-leblon.png",
+    name: "Carioca Jeans Tiradentes",
+    address: "Av. Ezequiel Ferreira Lima, 1228 - Loja 1 - Jardim Aero Rancho",
+    map: "https://goo.gl/maps/P4K1DHBmUFM5w6sx9",
+    contact: [
+      {
+        name: "Whatsapp 1",
+        number: "67992151555",
+      },
+      {
+        name: "Whatsapp 2",
+        number: "67992632717",
       },
     ],
     open: false,
@@ -30,12 +88,14 @@ export default function Home() {
   const [state, setState] = React.useState(lojas);
 
   function handleOpenInfo(data: any) {
-    data.open = !data.open;
+    const newState = [...state];
 
-    setState((isState) => {
-      const newData: any = isState.filter((isData) => isData.id !== data.id);
-      return [...newData, data];
-    });
+    const item = newState.find((isState) => isState.id === data.id);
+
+    if (item) {
+      item.open = !data.open;
+      setState(newState);
+    }
   }
 
   return (
@@ -50,7 +110,7 @@ export default function Home() {
           return (
             <div
               key={index}
-              className="border-black/5 bg-white shadow-sm flex flex-col items-center justify-center gap-3 border-[0.1rem] rounded-md"
+              className="border-black/5 w-[340px] bg-white shadow-sm flex flex-col items-center justify-center gap-3 border-[0.1rem] rounded-md"
             >
               <img
                 onClick={() => handleOpenInfo(loja)}
@@ -59,7 +119,7 @@ export default function Home() {
                 alt={loja.name}
               />
               {loja.open && (
-                <>
+                <div className="p-1">
                   <h1 className="font-bold text-center text-lg">{loja.name}</h1>
                   <button
                     onClick={() => window.open(`${loja.map}`, "blank")}
@@ -68,23 +128,25 @@ export default function Home() {
                     <FaMapMarkedAlt color="#1a40a3" size={25} /> {loja.address}
                   </button>
 
-                  {loja.contact.map((contact, isIndex) => {
-                    return (
-                      <button
-                        key={isIndex}
-                        onClick={() =>
-                          window.open(
-                            `https://wa.me/55${contact.number}`,
-                            "blank"
-                          )
-                        }
-                        className="bg-[#128C7E] flex items-center justify-center gap-3 text-white p-2 m-4 w-[300px] rounded-md"
-                      >
-                        <FaWhatsapp size={20} /> {contact.name}
-                      </button>
-                    );
-                  })}
-                </>
+                  <div className="flex items-center justify-center">
+                    {loja.contact.map((contact, isIndex) => {
+                      return (
+                        <button
+                          key={isIndex}
+                          onClick={() =>
+                            window.open(
+                              `https://wa.me/55${contact.number}`,
+                              "blank"
+                            )
+                          }
+                          className="bg-[#128C7E] flex items-center justify-center gap-3 text-white p-3 m-2 w-full rounded-md"
+                        >
+                          <FaWhatsapp size={25} /> {contact.name}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
               )}
             </div>
           );
