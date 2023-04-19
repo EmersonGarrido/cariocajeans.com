@@ -35,12 +35,10 @@ export default function Home() {
         {lojas.map((loja) => {
           return (
             <div className="border-black/5 bg-white shadow-sm flex flex-col items-center justify-center gap-3 border-[0.1rem] rounded-md">
-              <Image
-                className="rounded-t-md contain"
+              <img
+                className="rounded-t-md contain w-full h-[160px] container"
                 src={`/${loja.cover}`}
                 alt={loja.name}
-                width={400}
-                height={80}
               />
               <h1 className="font-bold text-center text-lg">{loja.name}</h1>
               <button
