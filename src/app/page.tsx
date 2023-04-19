@@ -136,7 +136,7 @@ export default function Home() {
               />
 
               {loja.open && (
-                <div className="p-1 w-full max-w-[350px]">
+                <div className="p-1 w-full flex items-center justify-center flex-col gap-3 max-w-[350px]">
                   <h1 className="font-bold text-center text-lg">{loja.name}</h1>
                   <button
                     onClick={() => window.open(`${loja.map}`, "blank")}
