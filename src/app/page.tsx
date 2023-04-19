@@ -1,4 +1,5 @@
 "use client";
+import * as React from "react";
 import { Roboto } from "next/font/google";
 import Image from "next/image";
 import { FaWhatsapp, FaMapMarkedAlt } from "react-icons/fa";
@@ -10,6 +11,7 @@ const roboto = Roboto({
 
 const lojas = [
   {
+    id: 1,
     cover: "cover-leblon.png",
     name: "Carioca Jeans Leblon",
     address: "R. Clineu da Costa Morães, 627 - Jardim Leblon",
@@ -20,10 +22,22 @@ const lojas = [
         number: "67993109148",
       },
     ],
+    open: false,
   },
 ];
 
 export default function Home() {
+  const [state, setState] = React.useState(lojas);
+
+  function handleOpenInfo(data: any) {
+    data.open = !data.open;
+
+    setState((isState) => {
+      const newData: any = isState.filter((isData) => isData.id !== data.id);
+      return [...newData, data];
+    });
+  }
+
   return (
     <main
       className={`${roboto.className} bg-[#eff7e9] h-screen w-full flex items-center justify-start flex-col p-4`}
@@ -32,38 +46,46 @@ export default function Home() {
         <Image src="/logo.png" width={150} height={120} alt="carioca jeans" />
       </div>
       <div className="mt-5 flex flex-col gap-3">
-        {lojas.map((loja, index) => {
+        {state.map((loja, index) => {
           return (
             <div
               key={index}
               className="border-black/5 bg-white shadow-sm flex flex-col items-center justify-center gap-3 border-[0.1rem] rounded-md"
             >
               <img
-                className="rounded-t-md contain w-full h-[160px] container"
+                onClick={() => handleOpenInfo(loja)}
+                className="rounded-md contain w-[340px] h-[160px] container"
                 src={`/${loja.cover}`}
                 alt={loja.name}
               />
-              <h1 className="font-bold text-center text-lg">{loja.name}</h1>
-              <button
-                onClick={() => window.open(`${loja.address}`, "blank")}
-                className="font-light flex items-center justify-center flex-col text-center text-sm"
-              >
-                <FaMapMarkedAlt size={20} /> {loja.address}
-              </button>
-
-              {loja.contact.map((contact, isIndex) => {
-                return (
+              {loja.open && (
+                <>
+                  <h1 className="font-bold text-center text-lg">{loja.name}</h1>
                   <button
-                    key={isIndex}
-                    onClick={() =>
-                      window.open(`https://wa.me/55${contact.number}`, "blank")
-                    }
-                    className="bg-[#128C7E] flex items-center justify-center gap-3 text-white p-2 m-4 w-[300px] rounded-md"
+                    onClick={() => window.open(`${loja.address}`, "blank")}
+                    className="font-light flex items-center justify-center flex-col text-center text-sm"
                   >
-                    <FaWhatsapp size={20} /> {contact.name}
+                    <FaMapMarkedAlt color="#1a40a3" size={25} /> {loja.address}
                   </button>
-                );
-              })}
+
+                  {loja.contact.map((contact, isIndex) => {
+                    return (
+                      <button
+                        key={isIndex}
+                        onClick={() =>
+                          window.open(
+                            `https://wa.me/55${contact.number}`,
+                            "blank"
+                          )
+                        }
+                        className="bg-[#128C7E] flex items-center justify-center gap-3 text-white p-2 m-4 w-[300px] rounded-md"
+                      >
+                        <FaWhatsapp size={20} /> {contact.name}
+                      </button>
+                    );
+                  })}
+                </>
+              )}
             </div>
           );
         })}
