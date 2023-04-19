@@ -107,7 +107,7 @@ export default function Home() {
       <div className="flex items-cente justify-center w-full">
         <Image src="/logo.png" width={130} height={100} alt="carioca jeans" />
       </div>
-      <h1 className="flex items-center justify-center font-semibold text-lg">
+      <h1 className="flex items-center justify-center gap-1 font-semibold text-lg">
         @cariocajeans <MdVerified color="#1a40a3" size={18} />
       </h1>
 
@@ -121,7 +121,7 @@ export default function Home() {
       <h1 className="font-thin text-xl mt-3 mb-3">
         ou Escolha uma Lojas Fisícas
       </h1>
-      <div className="mt-5 flex flex-col gap-3 w-full items-center justify-center max-w-[340px]">
+      <div className="mt-5 flex flex-col gap-5 w-full items-center justify-center max-w-[340px]">
         {state.map((loja, index) => {
           return (
             <div
