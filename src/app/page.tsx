@@ -103,7 +103,7 @@ export default function Home() {
       className={`${roboto.className} bg-[#eff7e9] h-screen w-full flex items-center justify-start flex-col p-4`}
     >
       <div className="flex items-cente justify-center w-full">
-        <Image src="/logo.png" width={150} height={120} alt="carioca jeans" />
+        <Image src="/logo.png" width={130} height={120} alt="carioca jeans" />
       </div>
       <div className="mt-5 flex flex-col gap-3">
         {state.map((loja, index) => {
