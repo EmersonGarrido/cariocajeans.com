@@ -5,6 +5,7 @@ import Image from "next/image";
 import { FaWhatsapp, FaMapMarkedAlt } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
 import { HiShoppingCart } from "react-icons/hi";
+import { HiCursorClick } from "react-icons/hi";
 
 const roboto = Roboto({
   weight: ["100", "400", "500", "700", "900"],
@@ -14,13 +15,13 @@ const roboto = Roboto({
 const lojas = [
   {
     id: 1,
-    cover: "cover-leblon.png",
+    cover: "carioca-leblon.png",
     name: "Carioca Jeans Leblon",
     address: "R. Clineu da Costa Morães, 627 - Jardim Leblon",
     map: "https://goo.gl/maps/1NWbgXWJjH9mPBDEA",
     contact: [
       {
-        name: "Whatsapp 1",
+        name: "Emerson Garrido",
         number: "67991355709",
       },
       {
@@ -126,14 +127,34 @@ export default function Home() {
           return (
             <div
               key={index}
-              className="border-black/5 w-full max-w-[340px] bg-white shadow-sm flex flex-col items-center justify-center gap-3 border-[0.1rem] rounded-md"
+              className="border-black/5 relative w-full max-w-[340px] bg-white shadow-sm flex flex-col items-center justify-center gap-3 border-[0.1rem] rounded-md"
             >
               <img
                 onClick={() => handleOpenInfo(loja)}
-                className="rounded-md contain w-full max-w-[340px] h-[160px] container"
+                className="rounded-md contain w-full max-w-[340px] h-[160px] container backdrop-brightness-50"
                 src={`/${loja.cover}`}
                 alt={loja.name}
               />
+
+              {loja.open === false && (
+                <div
+                  onClick={() => handleOpenInfo(loja)}
+                  className="absolute flex-col gap-3 w-full max-w-[340px] h-[160px] flex items-center justify-between p-2 bg-black/50 rounded-md"
+                >
+                  <div></div>
+                  <div className="flex items-center justify-center">
+                    <HiCursorClick
+                      color="#FFF"
+                      size={35}
+                      className="animate-pulse"
+                    />
+                    {/* <span className="font-bold text-white animate-pulse">
+                      clique aqui
+                    </span> */}
+                  </div>
+                  <h1 className="font-bold text-xl text-white">{loja.name}</h1>
+                </div>
+              )}
 
               {loja.open && (
                 <div className="p-1 w-full flex items-center justify-center flex-col gap-3 max-w-[350px]">
@@ -145,7 +166,7 @@ export default function Home() {
                     <FaMapMarkedAlt color="#1a40a3" size={25} /> {loja.address}
                   </button>
 
-                  <div className="flex items-center justify-center">
+                  <div className="flex items-center flex-col w-full p-2 justify-center">
                     {loja.contact.map((contact, isIndex) => {
                       return (
                         <button
@@ -156,7 +177,7 @@ export default function Home() {
                               "blank"
                             )
                           }
-                          className="bg-[#128C7E] flex items-center justify-center gap-3 text-white p-3 m-2 w-full rounded-md"
+                          className="bg-[#128C7E] flex items-center text-base justify-center gap-3 text-white p-3 m-2 w-full rounded-md"
                         >
                           <FaWhatsapp size={25} /> {contact.name}
                         </button>
