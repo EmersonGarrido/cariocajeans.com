@@ -102,7 +102,7 @@ export default function Home() {
 
   return (
     <main
-      className={`${roboto.className} bg-[#eff7e9] h-screen w-full flex items-center justify-start flex-col p-4`}
+      className={`${roboto.className} bg-[#eff7e9] h-full w-full flex items-center justify-start flex-col p-4`}
     >
       <div className="flex items-cente justify-center w-full">
         <Image src="/logo.png" width={130} height={100} alt="carioca jeans" />
