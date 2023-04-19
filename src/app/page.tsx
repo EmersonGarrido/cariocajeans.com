@@ -3,9 +3,11 @@ import * as React from "react";
 import { Roboto } from "next/font/google";
 import Image from "next/image";
 import { FaWhatsapp, FaMapMarkedAlt } from "react-icons/fa";
+import { MdVerified } from "react-icons/md";
+import { HiShoppingCart } from "react-icons/hi";
 
 const roboto = Roboto({
-  weight: ["400", "500", "700", "900"],
+  weight: ["100", "400", "500", "700", "900"],
   subsets: ["latin"],
 });
 
@@ -103,23 +105,38 @@ export default function Home() {
       className={`${roboto.className} bg-[#eff7e9] h-screen w-full flex items-center justify-start flex-col p-4`}
     >
       <div className="flex items-cente justify-center w-full">
-        <Image src="/logo.png" width={130} height={120} alt="carioca jeans" />
+        <Image src="/logo.png" width={130} height={100} alt="carioca jeans" />
       </div>
-      <div className="mt-5 flex flex-col gap-3">
+      <h1 className="flex items-center justify-center font-semibold text-lg">
+        @cariocajeans <MdVerified color="#1a40a3" size={18} />
+      </h1>
+
+      <button
+        onClick={() => window.open("https://cariocajeans.com.br", "blank")}
+        className="flex gap-3 w-full max-w-[340px] items-center justify-center text-base mt-5 mb-3 bg-[#1a77f3] shadow-md p-4 rounded-md text-white"
+      >
+        <HiShoppingCart size={20} /> Compre na Loja Online
+      </button>
+
+      <h1 className="font-thin text-xl mt-3 mb-3">
+        ou Escolha uma Lojas Fisícas
+      </h1>
+      <div className="mt-5 flex flex-col gap-3 w-full items-center justify-center max-w-[340px]">
         {state.map((loja, index) => {
           return (
             <div
               key={index}
-              className="border-black/5 w-[340px] bg-white shadow-sm flex flex-col items-center justify-center gap-3 border-[0.1rem] rounded-md"
+              className="border-black/5 w-full max-w-[340px] bg-white shadow-sm flex flex-col items-center justify-center gap-3 border-[0.1rem] rounded-md"
             >
               <img
                 onClick={() => handleOpenInfo(loja)}
-                className="rounded-md contain w-[340px] h-[160px] container"
+                className="rounded-md contain w-full max-w-[340px] h-[160px] container"
                 src={`/${loja.cover}`}
                 alt={loja.name}
               />
+
               {loja.open && (
-                <div className="p-1">
+                <div className="p-1 w-full max-w-[350px]">
                   <h1 className="font-bold text-center text-lg">{loja.name}</h1>
                   <button
                     onClick={() => window.open(`${loja.map}`, "blank")}
@@ -151,6 +168,18 @@ export default function Home() {
             </div>
           );
         })}
+      </div>
+
+      <div className="text-xs text-center mt-5 mb-4">
+        <span>
+          Todos os direitos reservados a Carioca Jeans <br /> Desenvolvido por{" "}
+          <a
+            className="text-center font-bold"
+            href="https://emersongarrido.com.br"
+          >
+            Emerson Garrido
+          </a>
+        </span>
       </div>
     </main>
   );
