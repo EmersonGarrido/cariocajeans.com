@@ -14,7 +14,6 @@ async function getData() {
     { next: { revalidate: 5 } }
   );
 
-  console.log(res);
   return res.json();
 }
 

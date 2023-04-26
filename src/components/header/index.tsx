@@ -9,6 +9,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ config }) => {
+  console.log(config);
   return (
     <>
       <div className="flex items-cente justify-center w-full">
@@ -18,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ config }) => {
         @{config[0]?.instagram} <MdVerified color="#1a40a3" size={18} />
       </h1>
 
-      {config[0]?.loja_ativa !== "off" && (
+      {config[0]?.loja_ativa === "on" && (
         <Link href={config[0].loja}>
           <button className="flex gap-3 w-full max-w-[340px] items-center justify-center text-base mt-5 mb-3 bg-[#1a77f3] shadow-md p-4 rounded-md text-white">
             <HiShoppingCart size={20} /> {config[0]?.titulo_bottao}
