@@ -34,7 +34,7 @@ const Content: React.FC<ContentProp> = ({ lojas }) => {
               className="border-black/5 relative w-full max-w-[340px] bg-white shadow-sm flex flex-col items-center justify-center gap-3 border-[0.1rem] rounded-md"
             >
               <img
-                onClick={() => handleOpenInfo(loja, index)}
+                // onClick={() => handleOpenInfo(loja, index)}
                 className="rounded-md contain w-full max-w-[340px] h-[160px] container backdrop-brightness-50"
                 src={`https://drive.google.com/uc?export=download&id=${loja.cover}`}
                 alt={loja.nome}
