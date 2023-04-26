@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { MdVerified } from "react-icons/md";
 import { HiShoppingCart } from "react-icons/hi";
 import Link from "next/link";
 
@@ -14,9 +13,6 @@ const Header: React.FC<HeaderProps> = ({ config }) => {
       <div className="flex items-cente justify-center w-full">
         <Image src="/logo.png" width={130} height={100} alt="carioca jeans" />
       </div>
-      <h1 className="flex items-center justify-center gap-1 font-semibold text-lg">
-        @{config[0]?.instagram} <MdVerified color="#1a40a3" size={18} />
-      </h1>
 
       {config[0]?.loja_ativa === "on" && (
         <Link href={config[0].loja}>
@@ -26,9 +22,7 @@ const Header: React.FC<HeaderProps> = ({ config }) => {
         </Link>
       )}
 
-      <h1 className="font-thin text-xl mt-3 mb-3">{config[0]?.sub_titulo}</h1>
-
-      <span>
+      <span className="text-center">
         Rede Carioca Jeans | Campo Grande - MS <br />
         🏝️ Desfrute à Melhor experiência em Jeans <br />
         🏝️ Veja qual Loja fica mais perto de Você <br />
