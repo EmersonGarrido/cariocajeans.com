@@ -9,7 +9,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ config }) => {
-  console.log(config);
   return (
     <>
       <div className="flex items-cente justify-center w-full">
