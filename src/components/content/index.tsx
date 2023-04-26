@@ -40,7 +40,7 @@ const Content: React.FC<ContentProp> = ({ lojas }) => {
                 alt={loja.nome}
               />
 
-              {loja?.open !== true && (
+              {/* {loja?.open !== true && (
                 <div
                   onClick={() => handleOpenInfo(loja, index)}
                   className="absolute flex-col gap-3 w-full max-w-[340px] h-[160px] flex items-center justify-between p-2 bg-black/50 rounded-md"
@@ -52,68 +52,63 @@ const Content: React.FC<ContentProp> = ({ lojas }) => {
                       size={35}
                       className="animate-pulse"
                     />
-                    {/* <span className="font-bold text-white animate-pulse">
-                      clique aqui
-                    </span> */}
                   </div>
                   <h1 className="font-bold text-xl text-white">{loja.nome}</h1>
                 </div>
-              )}
+              )} */}
 
-              {loja?.open && (
-                <div className="p-1 w-full flex items-center justify-center flex-col gap-3 max-w-[350px]">
-                  <h1 className="font-bold text-center text-lg">{loja.nome}</h1>
+              <div className="p-1 w-full flex items-center justify-center flex-col gap-3 max-w-[350px]">
+                <h1 className="font-bold text-center text-lg">{loja.nome}</h1>
+                <button
+                  onClick={() => window.open(`${loja.map}`, "blank")}
+                  className="font-light flex items-center justify-center flex-col text-center text-sm"
+                >
+                  <FaMapMarkedAlt color="#1a40a3" size={25} /> {loja.endereco}
+                </button>
+
+                <div className="mt-3">
                   <button
-                    onClick={() => window.open(`${loja.map}`, "blank")}
-                    className="font-light flex items-center justify-center flex-col text-center text-sm"
+                    onClick={() =>
+                      window.open(
+                        `https://instagram.com/${loja.instagram}`,
+                        "blank"
+                      )
+                    }
                   >
-                    <FaMapMarkedAlt color="#1a40a3" size={25} /> {loja.endereco}
+                    <AiFillInstagram size={35} color="#d62976" />
+                  </button>
+                  <button
+                    onClick={() =>
+                      window.open(
+                        `https://facebook.com/${loja.facebook}`,
+                        "blank"
+                      )
+                    }
+                  >
+                    <AiFillFacebook size={35} color="#3b5998" />
+                  </button>
+                </div>
+
+                <div className="flex items-center flex-col w-full p-2 justify-center">
+                  <button
+                    onClick={() =>
+                      window.open(`https://wa.me/55${loja.numero_1}`, "blank")
+                    }
+                    className="bg-[#128C7E] flex items-center text-base justify-center gap-3 text-white p-3 m-2 w-full rounded-md"
+                  >
+                    <FaWhatsapp size={25} /> {loja.nome_1}
                   </button>
 
-                  <div className="mt-3">
-                    <button
-                      onClick={() =>
-                        window.open(
-                          `https://instagram.com/${loja.instagram}`,
-                          "blank"
-                        )
-                      }
-                    >
-                      <AiFillInstagram size={35} color="#d62976" />
-                    </button>
-                    <button
-                      onClick={() =>
-                        window.open(
-                          `https://facebook.com/${loja.facebook}`,
-                          "blank"
-                        )
-                      }
-                    >
-                      <AiFillFacebook size={35} color="#3b5998" />
-                    </button>
-                  </div>
-
-                  <div className="flex items-center flex-col w-full p-2 justify-center">
-                    <button
-                      onClick={() =>
-                        window.open(`https://wa.me/55${loja.numero_1}`, "blank")
-                      }
-                      className="bg-[#128C7E] flex items-center text-base justify-center gap-3 text-white p-3 m-2 w-full rounded-md"
-                    >
-                      <FaWhatsapp size={25} /> {loja.nome_1}
-                    </button>
-
-                    <button
-                      onClick={() =>
-                        window.open(`https://wa.me/55${loja.numero_2}`, "blank")
-                      }
-                      className="bg-[#128C7E] flex items-center text-base justify-center gap-3 text-white p-3 m-2 w-full rounded-md"
-                    >
-                      <FaWhatsapp size={25} /> {loja.nome_2}
-                    </button>
-                  </div>
+                  <button
+                    onClick={() =>
+                      window.open(`https://wa.me/55${loja.numero_2}`, "blank")
+                    }
+                    className="bg-[#128C7E] flex items-center text-base justify-center gap-3 text-white p-3 m-2 w-full rounded-md"
+                  >
+                    <FaWhatsapp size={25} /> {loja.nome_2}
+                  </button>
                 </div>
-              )}
+              </div>
             </div>
           );
         })}
