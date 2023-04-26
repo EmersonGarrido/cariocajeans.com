@@ -27,6 +27,12 @@ const Header: React.FC<HeaderProps> = ({ config }) => {
       )}
 
       <h1 className="font-thin text-xl mt-3 mb-3">{config[0]?.sub_titulo}</h1>
+
+      <span>
+        Rede Carioca Jeans | Campo Grande - MS <br />
+        🏝️ Desfrute à Melhor experiência em Jeans <br />
+        🏝️ Veja qual Loja fica mais perto de Você <br />
+      </span>
     </>
   );
 };
