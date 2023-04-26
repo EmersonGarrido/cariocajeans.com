@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 
+import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
 import { FaWhatsapp, FaMapMarkedAlt } from "react-icons/fa";
 import { HiCursorClick } from "react-icons/hi";
 
@@ -68,6 +69,29 @@ const Content: React.FC<ContentProp> = ({ lojas }) => {
                   >
                     <FaMapMarkedAlt color="#1a40a3" size={25} /> {loja.endereco}
                   </button>
+
+                  <div className="mt-3">
+                    <button
+                      onClick={() =>
+                        window.open(
+                          `https://instagram.com/${loja.instagram}`,
+                          "blank"
+                        )
+                      }
+                    >
+                      <AiFillInstagram size={35} color="#d62976" />
+                    </button>
+                    <button
+                      onClick={() =>
+                        window.open(
+                          `https://facebook.com/${loja.facebook}`,
+                          "blank"
+                        )
+                      }
+                    >
+                      <AiFillFacebook size={35} color="#3b5998" />
+                    </button>
+                  </div>
 
                   <div className="flex items-center flex-col w-full p-2 justify-center">
                     <button
