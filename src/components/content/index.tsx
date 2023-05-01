@@ -66,8 +66,9 @@ const Content: React.FC<ContentProp> = ({ lojas }) => {
                   <FaMapMarkedAlt color="#1a40a3" size={25} /> {loja.endereco}
                 </button>
 
-                <div className="mt-3">
+                <div className="mt-3 flex items-center justify-center gap-2">
                   <button
+                    className="w-full flex items-center justify-center gap-2 text-[#d62976] bg-[#d62976]/20 border-[0.1rem] border-[#d62976] rounded-full px-2 py-1"
                     onClick={() =>
                       window.open(
                         `https://instagram.com/${loja.instagram}`,
@@ -75,9 +76,11 @@ const Content: React.FC<ContentProp> = ({ lojas }) => {
                       )
                     }
                   >
-                    <AiFillInstagram size={35} color="#d62976" />
+                    <AiFillInstagram size={30} color="#d62976" />
+                    Instagram
                   </button>
                   <button
+                    className="w-full flex items-center justify-center gap-2 text-[#3b5998] bg-[#3b5998]/20 border-[0.1rem] border-[#3b5998] rounded-full px-2 py-1"
                     onClick={() =>
                       window.open(
                         `https://facebook.com/${loja.facebook}`,
@@ -85,7 +88,8 @@ const Content: React.FC<ContentProp> = ({ lojas }) => {
                       )
                     }
                   >
-                    <AiFillFacebook size={35} color="#3b5998" />
+                    <AiFillFacebook size={30} color="#3b5998" />
+                    Facebook
                   </button>
                 </div>
 
