@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Roboto } from "next/font/google";
 
 import { Content, Header } from "components";

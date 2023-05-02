@@ -1,6 +1,6 @@
 "use client";
+import Image from "next/image";
 import * as React from "react";
-import ReactPixel from "react-facebook-pixel";
 import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
 import { FaWhatsapp, FaMapMarkedAlt } from "react-icons/fa";
 
@@ -9,9 +9,6 @@ interface ContentProp {
 }
 
 const Content: React.FC<ContentProp> = ({ lojas }) => {
-  ReactPixel.init("926331985158755");
-  ReactPixel.pageView();
-
   return (
     <>
       <div className="mt-5 flex flex-col gap-5 w-full items-center justify-center max-w-[340px]">
@@ -21,29 +18,13 @@ const Content: React.FC<ContentProp> = ({ lojas }) => {
               key={index}
               className="border-black/5 relative w-full max-w-[340px] bg-white shadow-sm flex flex-col items-center justify-center gap-3 border-[0.1rem] rounded-md"
             >
-              <img
-                // onClick={() => handleOpenInfo(loja, index)}
+              <Image
                 className="rounded-md contain w-full max-w-[340px] h-[160px] container backdrop-brightness-50"
                 src={`https://drive.google.com/uc?export=download&id=${loja.cover}`}
                 alt={loja.nome}
+                width={340}
+                height={160}
               />
-
-              {/* {loja?.open !== true && (
-                <div
-                  onClick={() => handleOpenInfo(loja, index)}
-                  className="absolute flex-col gap-3 w-full max-w-[340px] h-[160px] flex items-center justify-between p-2 bg-black/50 rounded-md"
-                >
-                  <div></div>
-                  <div className="flex items-center justify-center">
-                    <HiCursorClick
-                      color="#FFF"
-                      size={35}
-                      className="animate-pulse"
-                    />
-                  </div>
-                  <h1 className="font-bold text-xl text-white">{loja.nome}</h1>
-                </div>
-              )} */}
 
               <div className="p-1 w-full flex items-center justify-center flex-col gap-3 max-w-[350px]">
                 <h1 className="font-bold text-center text-lg">{loja.nome}</h1>
