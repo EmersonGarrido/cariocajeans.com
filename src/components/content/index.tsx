@@ -1,33 +1,21 @@
 "use client";
 import * as React from "react";
-
+import ReactPixel from "react-facebook-pixel";
 import { AiFillInstagram, AiFillFacebook } from "react-icons/ai";
 import { FaWhatsapp, FaMapMarkedAlt } from "react-icons/fa";
-import { HiCursorClick } from "react-icons/hi";
 
 interface ContentProp {
   lojas: any[];
 }
 
 const Content: React.FC<ContentProp> = ({ lojas }) => {
-  const [state, setState] = React.useState<any>(lojas);
+  ReactPixel.init("926331985158755");
+  ReactPixel.pageView();
 
-  function handleOpenInfo(data: any, index: number) {
-    const newState = [...state];
-    const isOpen = newState[index].open;
-
-    if (isOpen) {
-      newState[index].open = false;
-      setState(newState);
-    } else {
-      newState[index].open = true;
-      setState(newState);
-    }
-  }
   return (
     <>
       <div className="mt-5 flex flex-col gap-5 w-full items-center justify-center max-w-[340px]">
-        {state.map((loja: any, index: number) => {
+        {lojas.map((loja: any, index: number) => {
           return (
             <div
               key={index}
