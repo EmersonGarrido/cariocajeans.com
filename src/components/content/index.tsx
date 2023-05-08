@@ -9,6 +9,7 @@ interface ContentProp {
 }
 
 const Content: React.FC<ContentProp> = ({ lojas }) => {
+  console.log(lojas);
   return (
     <>
       <div className="mt-5 flex flex-col gap-5 w-full items-center justify-center max-w-[340px]">
@@ -20,7 +21,7 @@ const Content: React.FC<ContentProp> = ({ lojas }) => {
             >
               <Image
                 className="rounded-md contain w-full max-w-[340px] h-[160px] container backdrop-brightness-50"
-                src={`https://drive.google.com/uc?export=download&id=${loja.cover}`}
+                src={`/lojas/${loja.loja}.png`}
                 alt={loja.nome}
                 width={340}
                 height={160}
