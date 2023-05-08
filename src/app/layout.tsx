@@ -2,6 +2,7 @@ import "styles/globals.css";
 import * as fbq from "../lib/fpixel";
 import Script from "next/script";
 import FacebookPixel from "components/facebookPixel";
+import Google from "components/google";
 
 export const metadata = {
   title: "Carioca Jeans MS",
@@ -37,18 +38,7 @@ export default function RootLayout({
           `,
         }}
       />
-      <Script
-        id="analytics"
-        dangerouslySetInnerHTML={{
-          __html: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-      
-        gtag('config', 'G-59SS98D4NB');
-        `,
-        }}
-      />
+      <Google GA_TRACKING_ID="G-59SS98D4NB" />
       <FacebookPixel />
       <body>{children}</body>
     </html>
