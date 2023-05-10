@@ -10,7 +10,7 @@ const roboto = Roboto({
 async function getData() {
   const res = await fetch(
     "https://n8n.emersongarrido.com.br/webhook/10baea80-222a-480f-b1e6-fe2623e527c4",
-    { next: { revalidate: 5 } }
+    { next: { revalidate: 1800 } }
   );
 
   return res.json();
@@ -19,7 +19,7 @@ async function getData() {
 async function getConfig() {
   const res = await fetch(
     "https://n8n.emersongarrido.com.br/webhook/88f64533-8300-439f-9210-2d828956f3e4",
-    { next: { revalidate: 5 } }
+    { next: { revalidate: 1800 } }
   );
 
   return res.json();
